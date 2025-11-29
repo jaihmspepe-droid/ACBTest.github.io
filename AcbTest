@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACBM - Athlétique Club de Baie-Mahault</title>
+
+    <!-- Importation de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Importation de la police Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Configuration des couleurs du club -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // NOUVELLE PALETTE : Jaune dominant, Bleu en accent
+                        'acbm-yellow': {
+                            '400': '#FACC15', // Jaune principal (Tailwind Yellow 400)
+                            '500': '#EAB308',
+                        },
+                        'acbm-blue': {
+                            '600': '#2563EB', // Nouveau Bleu un peu plus clair pour l'accentuation
+                            '700': '#1D4ED8', // Ancien bleu conservé pour le contraste
+                            '800': '#1E40AF',
+                        },
+                        'acbm-white': '#FFFFFF',
+                        'acbm-gray': '#F9FAFB', // Gris très clair pour les fonds (plus lumineux)
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Style pour la page active dans le menu */
+        .nav-link.active {
+            color: #FACC15; /* Jaune ACBM */
+            font-weight: 700;
+            border-bottom: 2px solid #FACC15;
+        }
+        /* Style pour le menu mobile */
+        .nav-link-mobile.active {
+            background-color: #EAB308; /* Jaune plus foncé */
+            color: #1D4ED8; /* Bleu ACBM */
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-acbm-gray text-gray-800">
+
+    <!-- =========== EN-TÊTE ET NAVIGATION - BACKGROUND JAUNE =========== -->
+    <header class="bg-acbm-yellow-500 text-acbm-blue-800 shadow-xl sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo et Titre -->
+                <a href="#" onclick="showPage('page-accueil'); return false;" class="flex items-center space-x-3">
+                    <!-- Remplacement du Placeholder par le Logo ACBM (via le lien fourni) -->
+                    <img src="https://ibb.co/NgYSTJ6v" onerror="this.onerror=null; this.src='https://placehold.co/40x40/FACC15/1D4ED8?text=ACBM';" alt="Logo ACBM" class="w-10 h-10 rounded-full object-cover shadow-md">
+                    <div>
+                        <span class="text-xl md:text-2xl font-black text-acbm-blue-800">ACBM</span>
+                        <span class="hidden sm:inline text-xl md:text-2xl font-black">Athlétique Club</span>
+                        <p class="text-xs text-acbm-blue-600">"Un Club, Une Passion, Une Famille"</p>
+                    </div>
+                </a>
+
+                <!-- Menu Desktop -->
+                <!-- Liens en Bleu sur fond Jaune, actif en Bleu (avec bordure Jaune) -->
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="#" onclick="showPage('page-accueil'); return false;" class="nav-link active px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Accueil</a>
+                    <a href="#" onclick="showPage('page-club'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Le Club</a>
+                    <a href="#" onclick="showPage('page-inscriptions'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Inscriptions</a>
+                    <a href="#" onclick="showPage('page-disciplines'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Disciplines</a>
+                    <a href="#" onclick="showPage('page-horaires'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Horaires</a>
+                    <a href="#" onclick="showPage('page-actualites'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Actualités</a>
+                    <a href="#" onclick="showPage('page-calendrier'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Calendrier</a>
+                    <a href="#" onclick="showPage('page-resultats'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Résultats</a>
+                    <a href="#" onclick="showPage('page-galerie'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Galerie</a>
+                    <a href="#" onclick="showPage('page-partenaires'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Partenaires</a>
+                    <a href="#" onclick="showPage('page-contact'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Contact</a>
+                </div>
+
+                <!-- Bouton Menu Mobile (en Bleu) -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-acbm-blue-800 hover:text-acbm-blue-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Mobile (Caché par défaut) -->
+            <div id="mobile-menu" class="lg:hidden hidden mt-3 bg-acbm-blue-800 text-white rounded-lg p-2 shadow-lg">
+                <!-- Liens en Blanc sur fond Bleu, actif en Jaune sur fond Bleu -->
+                <a href="#" onclick="showPage('page-accueil'); return false;" class="nav-link-mobile active block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Accueil</a>
+                <a href="#" onclick="showPage('page-club'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Le Club</a>
+                <a href="#" onclick="showPage('page-inscriptions'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Inscriptions</a>
+                <a href="#" onclick="showPage('page-disciplines'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Disciplines</a>
+                <a href="#" onclick="showPage('page-horaires'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Horaires</a>
+                <a href="#" onclick="showPage('page-actualites'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Actualités</a>
+                <a href="#" onclick="showPage('page-calendrier'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Calendrier</a>
+                <a href="#" onclick="showPage('page-resultats'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Résultats</a>
+                <a href="#" onclick="showPage('page-galerie'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Galerie</a>
+                <a href="#" onclick="showPage('page-partenaires'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Partenaires</a>
+                <a href="#" onclick="showPage('page-contact'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========== CONTENU PRINCIPAL (PAGES) =========== -->
+    <main class="container mx-auto px-4 py-8 min-h-screen">
+
+        <!-- ===== PAGE: ACCUEIL (MOINS VIDE) ===== -->
+        <section id="page-accueil" class="page-content">
+
+            <!-- Section Héro - Jaune en Accent -->
+            <div class="rounded-xl shadow-2xl overflow-hidden mb-12 border-4 border-acbm-yellow-400">
+                <div class="relative">
+                    <!-- Image de fond (placeholder) -->
+                    <img src="https://placehold.co/1200x500/1D4ED8/FFFFFF?text=[Photo+du+stade+ou+athlètes]" alt="Athlètes de l'ACBM" class="w-full h-64 md:h-96 object-cover">
+                    <!-- Overlay pour lisibilité -->
+                    <div class="absolute inset-0 bg-acbm-blue-800 bg-opacity-60"></div>
+                    <!-- Contenu Héro -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
+                        <h1 class="text-4xl md:text-7xl font-black text-acbm-yellow-400 drop-shadow-lg mb-4 transform hover:scale-105 transition duration-300">
+                            ACBM : ATHLÉTISME EN GUADELOUPE
+                        </h1>
+                        <p class="text-lg md:text-2xl font-light mb-8 max-w-3xl">
+                            Notre club est le lieu où la passion, l'éducation et la performance se rencontrent. 
+                            Que vous soyez débutant ou athlète confirmé, rejoignez notre famille.
+                        </p>
+                        <div class="flex space-x-4">
+                            <button onclick="showPage('page-inscriptions'); return false;" class="bg-acbm-yellow-400 text-acbm-blue-800 font-extrabold py-3 px-8 rounded-full text-lg uppercase shadow-2xl transform hover:scale-110 hover:bg-acbm-yellow-500 transition duration-300 border-2 border-acbm-yellow-400">
+                                S'inscrire maintenant
+                            </button>
+                            <button onclick="showPage('page-club'); return false;" class="bg-acbm-blue-700 text-white font-extrabold py-3 px-8 rounded-full text-lg uppercase shadow-2xl transform hover:scale-110 hover:bg-acbm-blue-600 transition duration-300 border-2 border-acbm-yellow-400">
+                                Découvrir le Club
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nouvelle Section : Valeurs Clés (Très Jaune) -->
+            <div class="bg-acbm-yellow-400 p-8 rounded-xl shadow-inner mb-12">
+                <h2 class="text-3xl font-black text-acbm-blue-800 text-center mb-8">NOS VALEURS FONDAMENTALES</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-4 bg-white rounded-lg shadow-lg border-b-4 border-acbm-blue-700">
+                        <svg class="w-12 h-12 text-acbm-yellow-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 mb-2">Performance</h3>
+                        <p class="text-gray-700 text-sm">Nous accompagnons chaque athlète vers l'excellence, du niveau local aux compétitions nationales.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-lg border-b-4 border-acbm-blue-700">
+                         <svg class="w-12 h-12 text-acbm-yellow-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-3m-6-15L2 15M6 6l14 9M12 12l9 9"></path></svg>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 mb-2">Convivialité</h3>
+                        <p class="text-gray-700 text-sm">L'ACBM est une famille, promouvant l'esprit d'équipe, le respect et le soutien mutuel.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-lg border-b-4 border-acbm-blue-700">
+                         <svg class="w-12 h-12 text-acbm-yellow-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 mb-2">Formation</h3>
+                        <p class="text-gray-700 text-sm">Nous mettons l'accent sur l'encadrement de qualité pour développer le potentiel de chacun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Actualités Récentes -->
+            <h2 class="text-3xl font-black text-acbm-blue-700 mb-6 border-l-4 border-acbm-yellow-400 pl-3">Dernières Actualités</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- Article 1 (Jaune dominant) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/600x400/FACC15/1D4ED8?text=News+1" alt="Actualité 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">25 Nov 2025</span>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Nos athlètes brillent au meeting de...</h3>
+                        <p class="text-gray-600 mb-4">Description courte de l'actualité du club. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <a href="#" onclick="showPage('page-actualites'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
+                            Lire la suite
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Article 2 (Bleu accentué) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/600x400/1D4ED8/FACC15?text=News+2" alt="Actualité 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">22 Nov 2025</span>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Prochaine compétition ce samedi !</h3>
+                        <p class="text-gray-600 mb-4">Informations sur le prochain déplacement ou la compétition à domicile. Préparez-vous !...</p>
+                        <a href="#" onclick="showPage('page-actualites'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
+                            Lire la suite
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Article 3 (Neutre avec bordure Jaune) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/600x400/F9FAFB/1D4ED8?text=News+3" alt="Actualité 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">20 Nov 2025</span>
+                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Ouverture des inscriptions 202X-202Y</h3>
+                        <p class="text-gray-600 mb-4">Toutes les informations et les documents nécessaires sont désormais disponibles en ligne...</p>
+                        <a href="#" onclick="showPage('page-inscriptions'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
+                            S'inscrire
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nouvelle Section : Contact Rapide / Lieu (Mise en avant du lieu) -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Texte d'introduction rapide -->
+                <div class="p-6 bg-acbm-blue-700 rounded-xl shadow-lg text-white">
+                    <h3 class="text-2xl font-black text-acbm-yellow-400 mb-3">Où nous trouver ?</h3>
+                    <p class="mb-4 text-gray-200">
+                        Tous les entraînements se déroulent au cœur de l'activité sportive de Baie-Mahault.
+                        Venez nous rencontrer aux heures d'entraînement !
+                    </p>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <svg class="w-6 h-6 text-acbm-yellow-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <p class="font-semibold">Stade Municipal de Baie-Mahault</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-acbm-yellow-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <p class="font-semibold">Contactez-nous pour les horaires !</p>
+                    </div>
+                </div>
+
+                <!-- Carte (visuel) -->
+                <div>
+                    <iframe
+                        class="w-full h-80 rounded-xl shadow-lg border-2 border-acbm-yellow-400"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.4674751421683!2d-61.57962138513855!3d16.25732958874635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c134316377e69f3%3A0x67a3f5f8b5f3a743!2sStade%20Municipal%20de%20Baie-Mahault!5e0!3m2!1sfr!2sgp!4v1670000000000!5m2!1sfr!2sgp"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Carte du Stade Municipal de Baie-Mahault">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== PAGE: LE CLUB (Pas de changement majeur) ===== -->
+        <section id="page-club" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-6">Notre Club</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Histoire et Valeurs -->
+                <div>
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Histoire et Valeurs</h3>
+                    <p class="mb-4">Fondé le <strong>10 juin 2010</strong> par <strong>Mr Duflo Robin</strong>, l'Athlétique Club de Baie-Mahault (ACBM) est plus qu'un simple club sportif.</p>
+                    <p class="mb-4">Nos valeurs fondamentales sont : <strong>"Éduquer et Vivre Ensemble"</strong>.</p>
+                    <p class="text-gray-600 mb-4">
+                        [Texte de présentation du club à insérer ici. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis
+                        non magna. Sed euismod, nisl quis aliquet.]
+                    </p>
+                    <img src="https://placehold.co/600x350/1D4ED8/FACC15?text=[Photo+du+groupe+ou+du+stade]" alt="Le club" class="rounded-lg shadow-md w-full object-cover border-2 border-acbm-yellow-400">
+                </div>
+
+                <!-- Équipe Dirigeante et Entraîneurs -->
+                <div>
+                    <!-- Équipe Dirigeante -->
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">L'Équipe Dirigeante</h3>
+                    <div class="space-y-4 mb-8">
+                        <!-- Membre 1 -->
+                        <div class="flex items-center bg-acbm-gray p-4 rounded-lg shadow-sm">
+                            <img src="https://placehold.co/100x100/CCCCCC/FFFFFF?text=Photo" alt="Membre du bureau" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-acbm-yellow-400">
+                            <div>
+                                <h4 class="text-lg font-bold text-acbm-blue-700">[Nom du Président]</h4>
+                                <p class="text-gray-700">Président</p>
+                            </div>
+                        </div>
+                        <!-- Membre 2 -->
+                        <div class="flex items-center bg-acbm-gray p-4 rounded-lg shadow-sm">
+                            <img src="https://placehold.co/100x100/CCCCCC/FFFFFF?text=Photo" alt="Membre du bureau" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-acbm-yellow-400">
+                            <div>
+                                <h4 class="text-lg font-bold text-acbm-blue-700">[Nom du Trésorier]</h4>
+                                <p class="text-gray-700">Trésorier</p>
+                            </div>
+                        </div>
+                         <!-- Membre 3 -->
+                        <div class="flex items-center bg-acbm-gray p-4 rounded-lg shadow-sm">
+                            <img src="https://placehold.co/100x100/CCCCCC/FFFFFF?text=Photo" alt="Membre du bureau" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-acbm-yellow-400">
+                            <div>
+                                <h4 class="text-lg font-bold text-acbm-blue-700">[Nom du Secrétaire]</h4>
+                                <p class="text-gray-700">Secrétaire</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Entraîneurs -->
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Nos Entraîneurs</h3>
+                    <div class="space-y-4">
+                        <!-- Entraîneur 1 -->
+                        <div class="flex items-center bg-acbm-gray p-4 rounded-lg shadow-sm">
+                            <img src="https://placehold.co/100x100/CCCCCC/FFFFFF?text=Photo" alt="Entraîneur" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-acbm-yellow-400">
+                            <div>
+                                <h4 class="text-lg font-bold text-acbm-blue-700">[Nom de l'Entraîneur]</h4>
+                                <p class="text-gray-700">Spécialité : Sprints, Relais</p>
+                            </div>
+                        </div>
+                        <!-- Entraîneur 2 -->
+                        <div class="flex items-center bg-acbm-gray p-4 rounded-lg shadow-sm">
+                            <img src="https://placehold.co/100x100/CCCCCC/FFFFFF?text=Photo" alt="Entraîneur" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-acbm-yellow-400">
+                            <div>
+                                <h4 class="text-lg font-bold text-acbm-blue-700">[Nom de l'Entraîneur]</h4>
+                                <p class="text-gray-700">Spécialité : Sauts, Demi-fond</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: INSCRIPTIONS (Boutons plus Jaune) ===== -->
+        <section id="page-inscriptions" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-6">Rejoindre le Club</h2>
+            <p class="text-lg text-gray-700 mb-8">Nous sommes ravis de vous accueillir ! Voici la procédure pour vous inscrire à l'ACBM pour la saison 202X-202Y.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Procédure et Documents -->
+                <div>
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Procédure d'Inscription</h3>
+                    <ol class="list-decimal list-inside space-y-3 mb-8 text-gray-700">
+                        <li>Remplissez le formulaire de pré-inscription en ligne (ci-contre).</li>
+                        <li>Téléchargez les documents nécessaires (ci-dessous).</li>
+                        <li>Remplissez la fiche d'inscription (en ligne ou sur papier).</li>
+                        <li>Déposez votre dossier complet (fiche, certificat médical ou questionnaire, paiement) au local de l'ACBM au Stade Municipal de Baie-Mahault.</li>
+                    </ol>
+
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Documents à Télécharger</h3>
+                    <div class="space-y-3 mb-8">
+                        <a href="#!_FICHIER_INSCRIPTION_PDF_ICI_" class="flex items-center bg-acbm-yellow-400 bg-opacity-80 p-4 rounded-lg hover:bg-acbm-yellow-500 transition duration-300 text-acbm-blue-800 font-semibold shadow-md">
+                            <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                            <span>Fiche d'Inscription 202X-202Y (PDF)</span>
+                        </a>
+                        <a href="#!_FICHIER_QUESTIONNAIRE_SANTE_" class="flex items-center bg-acbm-yellow-400 bg-opacity-80 p-4 rounded-lg hover:bg-acbm-yellow-500 transition duration-300 text-acbm-blue-800 font-semibold shadow-md">
+                           <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                            <span>Questionnaire de Santé (PDF)</span>
+                        </a>
+                        <p class="text-sm text-gray-600 mt-2">Vous pouvez remplir la fiche d'inscription en ligne (bientôt disponible) ou l'imprimer.</p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Tarifs des Licences</h3>
+                    <p class="text-gray-700">
+                        [Texte d'attente pour les tarifs. Les tarifs pour la saison 202X-202Y seront communiqués prochainement.
+                        Ils dépendent de la catégorie d'âge. Merci de votre compréhension.]
+                    </p>
+                </div>
+
+                <!-- Formulaire de Pré-inscription -->
+                <div>
+                    <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Formulaire de Pré-inscription</h3>
+                    <form id="pre-inscription-form" class="bg-acbm-gray p-6 rounded-lg shadow-inner space-y-4 border-2 border-acbm-blue-600">
+                        <div>
+                            <label for="nom" class="block text-sm font-medium text-gray-700">Nom et Prénom</label>
+                            <input type="text" name="nom" id="nom" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                        </div>
+                         <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                        </div>
+                         <div>
+                            <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                            <input type="tel" name="telephone" id="telephone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                        </div>
+                        <div>
+                            <label for="categorie" class="block text-sm font-medium text-gray-700">Catégorie d'âge (estimée)</label>
+                            <select name="categorie" id="categorie" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                                <option>Baby Athlé</option>
+                                <option>École d'Athlé</option>
+                                <option>Poussin(e)</option>
+                                <option>Benjamin(e)</option>
+                                <option>Minime</option>
+                                <option>Cadet(te)</option>
+                                <option>Junior</option>
+                                <option>Espoir</option>
+                                <option>Senior</option>
+                                <option>Master</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-acbm-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 hover:bg-acbm-blue-600">
+                                Envoyer la pré-inscription
+                            </button>
+                        </div>
+                        <p id="form-success" class="text-green-600 font-semibold hidden text-center">Votre pré-inscription a bien été envoyée !</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: DISCIPLINES & CATÉGORIES (Couleurs ajustées) ===== -->
+        <section id="page-disciplines" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Disciplines et Catégories</h2>
+
+            <!-- Disciplines -->
+            <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-6">Disciplines Pratiquées</h3>
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- Courses -->
+                <div class="bg-acbm-yellow-400 bg-opacity-10 p-6 rounded-xl shadow-md border-t-4 border-acbm-yellow-500">
+                    <h4 class="text-xl font-bold text-acbm-blue-700 mb-2">Courses</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Sprint</li>
+                        <li>Cross-country</li>
+                        <li>Demi-fond</li>
+                        <li>Marche Athlétique</li>
+                        <li>Haies</li>
+                    </ul>
+                </div>
+                <!-- Sauts -->
+                <div class="bg-acbm-yellow-400 bg-opacity-10 p-6 rounded-xl shadow-md border-t-4 border-acbm-yellow-500">
+                    <h4 class="text-xl font-bold text-acbm-blue-700 mb-2">Sauts</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Saut en longueur</li>
+                        <li>Triple saut</li>
+                        <li>Saut à la perche</li>
+                        <li>Saut en hauteur</li>
+                    </ul>
+                </div>
+                <!-- Lancers -->
+                <div class="bg-acbm-yellow-400 bg-opacity-10 p-6 rounded-xl shadow-md border-t-4 border-acbm-yellow-500">
+                    <h4 class="text-xl font-bold text-acbm-blue-700 mb-2">Lancers</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Lancer de poids</li>
+                        <li>Lancer de disque</li>
+                        <li>Lancer de javelot</li>
+                        <li>Lancer de marteau</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- Catégories -->
+            <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-6">Catégories d'Âge</h3>
+            <div class="bg-acbm-blue-700 p-6 rounded-xl shadow-md text-white">
+                <ul class="list-disc list-inside space-y-2 md:columns-2">
+                    <li><strong>Baby Athlé</strong> (U7)</li>
+                    <li><strong>École d'Athlé</strong> (U10)</li>
+                    <li><strong>Poussins</strong> (U12)</li>
+                    <li><strong>Benjamins</strong> (U14)</li>
+                    <li><strong>Minimes</strong> (U16)</li>
+                    <li><strong>Cadets</strong> (U18)</li>
+                    <li><strong>Juniors</strong> (U20)</li>
+                    <li><strong>Espoirs</strong> (U23)</li>
+                    <li><strong>Seniors</strong></li>
+                    <li><strong>Masters</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: HORAIRES (Couleurs ajustées) ===== -->
+        <section id="page-horaires" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-6">Horaires et Lieux</h2>
+            <p class="text-lg text-gray-700 mb-8">Tous les entraînements ont lieu au <strong>Stade Municipal de Baie-Mahault</strong> (sauf indication contraire pour le cross).</p>
+
+            <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-6">Planning des Entraînements</h3>
+            <p class="text-gray-700 mb-4">[Texte d'attente pour le planning. Les horaires précis par catégorie pour la saison 202X-202Y seront bientôt disponibles ici.]</p>
+
+            <!-- Tableau Placeholder -->
+            <div class="overflow-x-auto rounded-lg shadow-md border border-acbm-yellow-400">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-acbm-yellow-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Catégorie</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Lundi</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Mardi</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Mercredi</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Jeudi</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Vendredi</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-black text-acbm-blue-800 uppercase tracking-wider">Samedi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Baby Athlé / École</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">16h-17h30</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">9h-10h30</td>
+                        </tr>
+                         <tr class="bg-acbm-gray">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Benjamins / Minimes</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Cadets et +</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500 font-semibold text-acbm-blue-700">17h-19h</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">-</td>
+                        </tr>
+                        <!-- ... Autres lignes ... -->
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-gray-600 mt-4">* Planning provisoire. Veuillez confirmer avec votre entraîneur.</p>
+        </section>
+
+        <!-- ===== PAGE: ACTUALITÉS (Couleurs ajustées) ===== -->
+        <section id="page-actualites" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Actualités du Club</h2>
+
+            <div class="space-y-8">
+                <!-- Article 1 (Mise en avant Jaune) -->
+                <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/400x250/FACC15/1D4ED8?text=News+1" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
+                    <div class="md:w-2/3">
+                        <span class="text-sm text-acbm-yellow-500 font-semibold">25 Nov 2025</span>
+                        <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Titre de l'actualité à venir</h3>
+                        <p class="text-gray-600">Texte complet de l'actualité. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
+                    </div>
+                </div>
+                <!-- Article 2 -->
+                <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/400x250/1D4ED8/FACC15?text=News+2" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
+                    <div class="md:w-2/3">
+                        <span class="text-sm text-acbm-yellow-500 font-semibold">22 Nov 2025</span>
+                        <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Prochaine compétition</h3>
+                        <p class="text-gray-600">Détails sur la prochaine compétition. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
+                    </div>
+                </div>
+                 <!-- Article 3 -->
+                <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
+                    <img src="https://placehold.co/400x250/F9FAFB/1D4ED8?text=News+3" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
+                    <div class="md:w-2/3">
+                        <span class="text-sm text-acbm-yellow-500 font-semibold">20 Nov 2025</span>
+                        <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Retour sur les championnats</h3>
+                        <p class="text-gray-600">Analyse des derniers résultats. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: CALENDRIER (Couleurs ajustées) ===== -->
+        <section id="page-calendrier" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Calendrier des Événements</h2>
+            <p class="text-lg text-gray-700 mb-8">Ne manquez aucune compétition ou événement important du club.</p>
+
+            <div class="space-y-6">
+                <!-- Événement 1 -->
+                <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
+                    <div class="text-center w-20 mr-4">
+                        <span class="block text-3xl font-black text-acbm-blue-700">12</span>
+                        <span class="block text-lg font-semibold text-acbm-yellow-500">DÉC</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-acbm-blue-700">Championnat de Cross (Journée 1)</h3>
+                        <p class="text-gray-700">Lieu : [Lieu à définir]</p>
+                        <p class="text-gray-700">Catégories : Toutes</p>
+                    </div>
+                </div>
+                <!-- Événement 2 -->
+                <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
+                    <div class="text-center w-20 mr-4">
+                        <span class="block text-3xl font-black text-acbm-blue-700">19</span>
+                        <span class="block text-lg font-semibold text-acbm-yellow-500">DÉC</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-acbm-blue-700">Meeting en salle (Minimes et +)</h3>
+                        <p class="text-gray-700">Lieu : Stade Municipal</p>
+                        <p class="text-gray-700">Catégories : Minimes, Cadets, Juniors, Seniors</p>
+                    </div>
+                </div>
+                <!-- Événement 3 -->
+                <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
+                    <div class="text-center w-20 mr-4">
+                        <span class="block text-3xl font-black text-acbm-blue-700">08</span>
+                        <span class="block text-lg font-semibold text-acbm-yellow-500">JAN</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-acbm-blue-700">Assemblée Générale du Club</h3>
+                        <p class="text-gray-700">Lieu : Local ACBM</p>
+                        <p class="text-gray-700">Tous les membres sont conviés</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: RÉSULTATS (Couleurs ajustées) ===== -->
+        <section id="page-resultats" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Résultats Récents</h2>
+            <p class="text-lg text-gray-700 mb-8">Félicitations à tous nos athlètes pour leurs performances !</p>
+
+            <div class="space-y-6">
+                <!-- Compétition 1 -->
+                <div class="bg-acbm-yellow-400 bg-opacity-20 p-6 rounded-xl border border-acbm-yellow-500">
+                    <h3 class="text-2xl font-bold text-acbm-blue-700 mb-2">Résultats du Meeting du [Date]</h3>
+                    <p class="text-gray-700 mb-4">Lieu : [Nom du stade]</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-800">
+                        <li><strong class="text-acbm-blue-800">[Nom Athlète 1]</strong> (Minime) : <span class="text-acbm-yellow-500 font-black">1ère place</span> - Saut en longueur (5m20)</li>
+                        <li><strong class="text-acbm-blue-800">[Nom Athlète 2]</strong> (Cadet) : <span class="text-acbm-blue-700 font-black">2ème place</span> - 100m (11.5s)</li>
+                        <li><strong class="text-acbm-blue-800">[Nom Athlète 3]</strong> (Senior) : <span class="text-acbm-yellow-500 font-black">1ère place</span> - Lancer de poids (12m40)</li>
+                    </ul>
+                    <a href="#!_LIEN_RESULTATS_COMPLETS_" class="inline-block mt-4 font-bold text-acbm-blue-700 hover:text-acbm-blue-600">Voir les résultats complets &rarr;</a>
+                </div>
+                <!-- Compétition 2 -->
+                <div class="bg-acbm-yellow-400 bg-opacity-20 p-6 rounded-xl border border-acbm-yellow-500">
+                    <h3 class="text-2xl font-bold text-acbm-blue-700 mb-2">Résultats du Cross du [Date]</h3>
+                    <p class="text-gray-700 mb-4">Lieu : [Nom du lieu]</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-800">
+                        <li><strong class="text-acbm-blue-800">Équipe Benjamins</strong> : <span class="text-acbm-blue-700 font-black">3ème place</span></li>
+                        <li><strong class="text-acbm-blue-800">[Nom Athlète 4]</strong> (Junior) : 5ème place</li>
+                    </ul>
+                    <a href="#!_LIEN_RESULTATS_COMPLETS_" class="inline-block mt-4 font-bold text-acbm-blue-700 hover:text-acbm-blue-600">Voir les résultats complets &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: GALERIE (Couleurs ajustées) ===== -->
+        <section id="page-galerie" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Galerie Médias</h2>
+            <p class="text-lg text-gray-700 mb-8">Revivez les meilleurs moments du club en images.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <img src="https://placehold.co/400x400/FACC15/1D4ED8?text=Photo+1" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/1D4ED8/FACC15?text=Photo+2" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/F9FAFB/1D4ED8?text=Photo+3" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/CCCCCC/1D4ED8?text=Photo+4" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/1D4ED8/FACC15?text=Photo+5" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/FACC15/1D4ED8?text=Photo+6" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/CCCCCC/1D4ED8?text=Photo+7" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+                <img src="https://placehold.co/400x400/F9FAFB/1D4ED8?text=Photo+8" alt="Galerie" class="rounded-lg shadow-md transform hover:scale-105 transition duration-300 cursor-pointer border-2 border-acbm-blue-600">
+            </div>
+        </section>
+
+        <!-- ===== PAGE: PARTENAIRES (Couleurs ajustées) ===== -->
+        <section id="page-partenaires" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Nos Partenaires</h2>
+            <p class="text-lg text-gray-700 mb-8">Un grand merci à nos sponsors et partenaires qui soutiennent l'ACBM.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <a href="#" target="_blank" class="grayscale hover:grayscale-0 transition duration-300 p-4 bg-acbm-yellow-400 bg-opacity-10 rounded-lg border-2 border-acbm-yellow-500">
+                    <img src="https://placehold.co/300x150/CCCCCC/000000?text=Logo+Partenaire+1" alt="Logo Partenaire" class="rounded-lg w-full h-auto">
+                </a>
+                 <a href="#" target="_blank" class="grayscale hover:grayscale-0 transition duration-300 p-4 bg-acbm-yellow-400 bg-opacity-10 rounded-lg border-2 border-acbm-yellow-500">
+                    <img src="https://placehold.co/300x150/CCCCCC/000000?text=Logo+Partenaire+2" alt="Logo Partenaire" class="rounded-lg w-full h-auto">
+                </a>
+                 <a href="#" target="_blank" class="grayscale hover:grayscale-0 transition duration-300 p-4 bg-acbm-yellow-400 bg-opacity-10 rounded-lg border-2 border-acbm-yellow-500">
+                    <img src="https://placehold.co/300x150/CCCCCC/000000?text=Logo+Partenaire+3" alt="Logo Partenaire" class="rounded-lg w-full h-auto">
+                </a>
+                 <a href="#" target="_blank" class="grayscale hover:grayscale-0 transition duration-300 p-4 bg-acbm-yellow-400 bg-opacity-10 rounded-lg border-2 border-acbm-yellow-500">
+                    <img src="https://placehold.co/300x150/CCCCCC/000000?text=Logo+Partenaire+4" alt="Logo Partenaire" class="rounded-lg w-full h-auto">
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== PAGE: CONTACT (Couleurs ajustées) ===== -->
+        <section id="page-contact" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Nous Contacter</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Informations de contact -->
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Adresse</h3>
+                        <p class="text-gray-700">Local de l'ACBM</p>
+                        <p class="text-gray-700">Stade Municipal de Baie-Mahault</p>
+                        <p class="text-gray-700">97122 Baie-Mahault, Guadeloupe</p>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Email</h3>
+                        <a href="mailto:contact@acbm.gp" class="text-acbm-blue-700 hover:text-acbm-yellow-500 underline">[email.acbm@example.com]</a>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Téléphone</h3>
+                        <a href="tel:+590XXXXXXXXX" class="text-acbm-blue-700 hover:text-acbm-yellow-500 underline">[+590 XXX XX XX XX]</a>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Réseaux Sociaux</h3>
+                        <div class="flex space-x-4">
+                            <!-- Remplacer # par vos vrais liens -->
+                            <a href="#" target="_blank" class="text-acbm-blue-700 hover:text-acbm-yellow-500 transition duration-300">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3v9h4v-9z"/></svg>
+                            </a>
+                            <a href="#" target="_blank" class="text-acbm-blue-700 hover:text-acbm-yellow-500 transition duration-300">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zM12 6.873c-2.849 0-5.127 2.278-5.127 5.127s2.278 5.127 5.127 5.127 5.127-2.278 5.127-5.127-2.278-5.127-5.127-5.127zm0 8.252c-1.73 0-3.125-1.395-3.125-3.125s1.395-3.125 3.125-3.125 3.125 1.395 3.125 3.125-1.395 3.125-3.125 3.125zm4.908-8.212c-.76 0-1.377.618-1.377 1.377s.618 1.377 1.377 1.377 1.377-.618 1.377-1.377-.618-1.377-1.377-1.377z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte (Placeholder) -->
+                <div>
+                    <iframe
+                        class="w-full h-80 rounded-lg shadow-md border-2 border-acbm-yellow-400"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.4674751421683!2d-61.57962138513855!3d16.25732958874635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c134316377e69f3%3A0x67a3f5f8b5f3a743!2sStade%20Municipal%20de%20Baie-Mahault!5e0!3m2!1sfr!2sgp!4v1670000000000!5m2!1sfr!2sgp"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Carte du Stade Municipal de Baie-Mahault">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========== PIED DE PAGE (Fond Bleu pour contraste) =========== -->
+    <footer class="bg-acbm-blue-800 text-white mt-12 pt-10 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-6">
+                <!-- Logo et Slogan -->
+                <div>
+                    <h4 class="text-2xl font-black text-acbm-yellow-400 mb-2">ACBM</h4>
+                    <p class="text-gray-300 mb-2">Athlétique Club de Baie-Mahault</p>
+                    <p class="text-acbm-yellow-400 italic">"Un Club, Une Passion, Une Famille"</p>
+                </div>
+                <!-- Liens Rapides -->
+                <div>
+                    <h5 class="text-lg font-semibold text-acbm-yellow-400 uppercase mb-3">Liens Rapides</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('page-inscriptions'); return false;" class="text-gray-300 hover:text-acbm-yellow-400">Inscriptions</a></li>
+                        <li><a href="#" onclick="showPage('page-horaires'); return false;" class="text-gray-300 hover:text-acbm-yellow-400">Horaires</a></li>
+                        <li><a href="#" onclick="showPage('page-calendrier'); return false;" class="text-gray-300 hover:text-acbm-yellow-400">Calendrier</a></li>
+                        <li><a href="#" onclick="showPage('page-resultats'); return false;" class="text-gray-300 hover:text-acbm-yellow-400">Résultats</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h5 class="text-lg font-semibold text-acbm-yellow-400 uppercase mb-3">Contact</h5>
+                    <p class="text-gray-300 mb-2">Stade Municipal, 97122 Baie-Mahault</p>
+                    <p class="text-gray-300 mb-2">[email.acbm@example.com]</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" target="_blank" class="text-gray-300 hover:text-acbm-yellow-400 transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3v9h4v-9z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" class="text-gray-300 hover:text-acbm-yellow-400 transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.058 1.646.07 4.85-.07zM12 6.873c-2.849 0-5.127 2.278-5.127 5.127s2.278 5.127 5.127 5.127 5.127-2.278 5.127-5.127-2.278-5.127-5.127-5.127zm0 8.252c-1.73 0-3.125-1.395-3.125-3.125s1.395-3.125 3.125-3.125 3.125 1.395 3.125 3.125-1.395 3.125-3.125 3.125zm4.908-8.212c-.76 0-1.377.618-1.377 1.377s.618 1.377 1.377 1.377 1.377-.618 1.377-1.377-.618-1.377-1.377-1.377z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-acbm-blue-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Athlétique Club de Baie-Mahault. Tous droits réservés.</p>
+                <!-- Si vous voulez ajouter un crédit, vous pouvez le mettre ici -->
+                <!-- <p>Site conçu avec l'aide de Gemini</p> -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========== SCRIPTS JAVASCRIPT =========== -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        const pages = document.querySelectorAll('.page-content');
+        const form = document.getElementById('pre-inscription-form');
+        const formSuccess = document.getElementById('form-success');
+
+        // Gestion du menu mobile
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fonction pour afficher une page et masquer les autres
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Afficher la page cible
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Mettre à jour la classe 'active' pour le menu desktop
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                // Note: La couleur de lien actif est maintenant gérée par la classe .active
+                // définie dans <style> pour la couleur Jaune.
+                if (link.getAttribute('onclick').includes(pageId)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Mettre à jour la classe 'active' pour le menu mobile
+             mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                // Note: La couleur de lien actif est maintenant gérée par la classe .active
+                // définie dans <style> pour le fond Jaune.
+                if (link.getAttribute('onclick').includes(pageId)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Fermer le menu mobile après un clic
+            mobileMenu.classList.add('hidden');
+
+            // Remonter en haut de la page
+            window.scrollTo(0, 0);
+        }
+
+        // Gestion du formulaire de pré-inscription
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Empêche l'envoi réel du formulaire
+
+                // Ici, vous ajouteriez normalement un appel (fetch) pour envoyer les données à un serveur
+
+                // Simulation d'un succès
+                form.reset(); // Vide le formulaire
+                formSuccess.classList.remove('hidden'); // Affiche le message de succès
+
+                // Cache le message après 3 secondes
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 3000);
+            });
+        }
+
+        // Afficher la page d'accueil par défaut au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('page-accueil');
+        });
+    </script>
+
+</body>
+</html>
