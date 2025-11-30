@@ -87,6 +87,8 @@
                     <a href="#" onclick="showPage('page-galerie'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Galerie</a>
                     <a href="#" onclick="showPage('page-partenaires'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Partenaires</a>
                     <a href="#" onclick="showPage('page-contact'); return false;" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-300 text-acbm-blue-800 hover:text-acbm-blue-600">Contact</a>
+                    <!-- Bouton Espace Admin -->
+                    <a href="#" onclick="showPage('page-admin'); return false;" class="px-3 py-2 bg-acbm-blue-800 text-white rounded-md text-sm font-bold hover:bg-acbm-blue-700 transition shadow-lg">Espace Admin</a>
                 </div>
 
                 <!-- Bouton Menu Mobile (en Bleu) -->
@@ -113,6 +115,7 @@
                 <a href="#" onclick="showPage('page-galerie'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Galerie</a>
                 <a href="#" onclick="showPage('page-partenaires'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Partenaires</a>
                 <a href="#" onclick="showPage('page-contact'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium transition duration-300 text-white hover:bg-acbm-blue-600">Contact</a>
+                <a href="#" onclick="showPage('page-admin'); return false;" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-bold bg-acbm-yellow-500 text-acbm-blue-800 mt-2">Espace Admin</a>
             </div>
         </nav>
     </header>
@@ -175,44 +178,35 @@
 
             <!-- Section Actualités Récentes -->
             <h2 class="text-3xl font-black text-acbm-blue-700 mb-6 border-l-4 border-acbm-yellow-400 pl-3">Dernières Actualités</h2>
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <!-- Article 1 (Jaune dominant) -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
-                    <img src="https://placehold.co/600x400/FACC15/1D4ED8?text=News+1" alt="Actualité 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">25 Nov 2025</span>
-                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Nos athlètes brillent au meeting de...</h3>
-                        <p class="text-gray-600 mb-4">Description courte de l'actualité du club. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                        <a href="#" onclick="showPage('page-actualites'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
-                            Lire la suite
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
-                        </a>
+            <div id="home-news-container">
+                 <!-- Ce conteneur sera rempli par Firebase, ou affichera le contenu statique ci-dessous si vide -->
+                 <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <!-- Article 1 (Jaune dominant) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                        <img src="https://placehold.co/600x400/FACC15/1D4ED8?text=News+1" alt="Actualité 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">25 Nov 2025</span>
+                            <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Nos athlètes brillent au meeting de...</h3>
+                            <p class="text-gray-600 mb-4">Description courte de l'actualité du club...</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Article 2 (Bleu accentué) -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
-                    <img src="https://placehold.co/600x400/1D4ED8/FACC15?text=News+2" alt="Actualité 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">22 Nov 2025</span>
-                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Prochaine compétition ce samedi !</h3>
-                        <p class="text-gray-600 mb-4">Informations sur le prochain déplacement ou la compétition à domicile. Préparez-vous !...</p>
-                        <a href="#" onclick="showPage('page-actualites'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
-                            Lire la suite
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
-                        </a>
+                    <!-- Article 2 (Bleu accentué) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                        <img src="https://placehold.co/600x400/1D4ED8/FACC15?text=News+2" alt="Actualité 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">22 Nov 2025</span>
+                            <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Prochaine compétition ce samedi !</h3>
+                            <p class="text-gray-600 mb-4">Informations sur le prochain déplacement...</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Article 3 (Neutre avec bordure Jaune) -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
-                    <img src="https://placehold.co/600x400/F9FAFB/1D4ED8?text=News+3" alt="Actualité 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">20 Nov 2025</span>
-                        <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Ouverture des inscriptions 202X-202Y</h3>
-                        <p class="text-gray-600 mb-4">Toutes les informations et les documents nécessaires sont désormais disponibles en ligne...</p>
-                        <a href="#" onclick="showPage('page-inscriptions'); return false;" class="font-semibold text-acbm-blue-700 hover:text-acbm-yellow-500 flex items-center">
-                            S'inscrire
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
-                        </a>
+                    <!-- Article 3 (Neutre avec bordure Jaune) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300 border-b-4 border-acbm-yellow-400">
+                        <img src="https://placehold.co/600x400/F9FAFB/1D4ED8?text=News+3" alt="Actualité 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">20 Nov 2025</span>
+                            <h3 class="text-xl font-bold text-acbm-blue-700 my-2">Ouverture des inscriptions 202X-202Y</h3>
+                            <p class="text-gray-600 mb-4">Toutes les informations et les documents...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -370,20 +364,20 @@
                     <h3 class="text-2xl font-bold text-acbm-yellow-500 mb-4">Formulaire de Pré-inscription</h3>
                     <form id="pre-inscription-form" class="bg-acbm-gray p-6 rounded-lg shadow-inner space-y-4 border-2 border-acbm-blue-600">
                         <div>
-                            <label for="nom" class="block text-sm font-medium text-gray-700">Nom et Prénom</label>
-                            <input type="text" name="nom" id="nom" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                            <label for="insc-nom" class="block text-sm font-medium text-gray-700">Nom et Prénom</label>
+                            <input type="text" id="insc-nom" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
                         </div>
                          <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                            <label for="insc-email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="insc-email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
                         </div>
                          <div>
-                            <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                            <input type="tel" name="telephone" id="telephone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                            <label for="insc-tel" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                            <input type="tel" id="insc-tel" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
                         </div>
                         <div>
-                            <label for="categorie" class="block text-sm font-medium text-gray-700">Catégorie d'âge (estimée)</label>
-                            <select name="categorie" id="categorie" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
+                            <label for="insc-cat" class="block text-sm font-medium text-gray-700">Catégorie d'âge (estimée)</label>
+                            <select id="insc-cat" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-acbm-yellow-500 focus:border-acbm-yellow-500">
                                 <option>Baby Athlé</option>
                                 <option>École d'Athlé</option>
                                 <option>Poussin(e)</option>
@@ -398,10 +392,9 @@
                         </div>
                         <div>
                             <button type="submit" class="w-full bg-acbm-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 hover:bg-acbm-blue-600">
-                                Envoyer la pré-inscription
+                                Envoyer la pré-inscription (Email)
                             </button>
                         </div>
-                        <p id="form-success" class="text-green-600 font-semibold hidden text-center">Votre pré-inscription a bien été envoyée !</p>
                     </form>
                 </div>
             </div>
@@ -583,33 +576,15 @@
         <!-- ===== PAGE: ACTUALITÉS (Couleurs ajustées) ===== -->
         <section id="page-actualites" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
             <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Actualités du Club</h2>
-
-            <div class="space-y-8">
-                <!-- Article 1 (Mise en avant Jaune) -->
+            <!-- Conteneur pour Firebase -->
+            <div id="news-container" class="space-y-8">
+                <!-- Chargement dynamique ou contenu statique par défaut ci-dessous -->
                 <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
                     <img src="https://placehold.co/400x250/FACC15/1D4ED8?text=News+1" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
                     <div class="md:w-2/3">
                         <span class="text-sm text-acbm-yellow-500 font-semibold">25 Nov 2025</span>
                         <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Titre de l'actualité à venir</h3>
-                        <p class="text-gray-600">Texte complet de l'actualité. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
-                    </div>
-                </div>
-                <!-- Article 2 -->
-                <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
-                    <img src="https://placehold.co/400x250/1D4ED8/FACC15?text=News+2" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
-                    <div class="md:w-2/3">
-                        <span class="text-sm text-acbm-yellow-500 font-semibold">22 Nov 2025</span>
-                        <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Prochaine compétition</h3>
-                        <p class="text-gray-600">Détails sur la prochaine compétition. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
-                    </div>
-                </div>
-                 <!-- Article 3 -->
-                <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400">
-                    <img src="https://placehold.co/400x250/F9FAFB/1D4ED8?text=News+3" alt="Actualité" class="w-full md:w-1/3 rounded-lg object-cover mb-4 md:mb-0 border border-gray-300">
-                    <div class="md:w-2/3">
-                        <span class="text-sm text-acbm-yellow-500 font-semibold">20 Nov 2025</span>
-                        <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">Retour sur les championnats</h3>
-                        <p class="text-gray-600">Analyse des derniers résultats. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet, odio sit amet convallis mollis, augue tellus sodales nisl, a ccelerisque felis turpis non magna. Sed euismod, nisl quis aliquet, sapien sem lacinia ligula, vel porta justo felis eu velit. Vivamus nec purus ac elit finibus auctor. Nullam nec mauris eget elit feugiat...</p>
+                        <p class="text-gray-600">Texte complet de l'actualité...</p>
                     </div>
                 </div>
             </div>
@@ -620,8 +595,8 @@
             <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Calendrier des Événements</h2>
             <p class="text-lg text-gray-700 mb-8">Ne manquez aucune compétition ou événement important du club.</p>
 
-            <div class="space-y-6">
-                <!-- Événement 1 -->
+            <div id="calendar-container" class="space-y-6">
+                <!-- Événement 1 (Statique par défaut) -->
                 <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
                     <div class="text-center w-20 mr-4">
                         <span class="block text-3xl font-black text-acbm-blue-700">12</span>
@@ -633,30 +608,6 @@
                         <p class="text-gray-700">Catégories : Toutes</p>
                     </div>
                 </div>
-                <!-- Événement 2 -->
-                <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
-                    <div class="text-center w-20 mr-4">
-                        <span class="block text-3xl font-black text-acbm-blue-700">19</span>
-                        <span class="block text-lg font-semibold text-acbm-yellow-500">DÉC</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-acbm-blue-700">Meeting en salle (Minimes et +)</h3>
-                        <p class="text-gray-700">Lieu : Stade Municipal</p>
-                        <p class="text-gray-700">Catégories : Minimes, Cadets, Juniors, Seniors</p>
-                    </div>
-                </div>
-                <!-- Événement 3 -->
-                <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700">
-                    <div class="text-center w-20 mr-4">
-                        <span class="block text-3xl font-black text-acbm-blue-700">08</span>
-                        <span class="block text-lg font-semibold text-acbm-yellow-500">JAN</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-acbm-blue-700">Assemblée Générale du Club</h3>
-                        <p class="text-gray-700">Lieu : Local ACBM</p>
-                        <p class="text-gray-700">Tous les membres sont conviés</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -665,27 +616,14 @@
             <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Résultats Récents</h2>
             <p class="text-lg text-gray-700 mb-8">Félicitations à tous nos athlètes pour leurs performances !</p>
 
-            <div class="space-y-6">
-                <!-- Compétition 1 -->
+            <div id="results-container" class="space-y-6">
+                <!-- Compétition 1 (Statique par défaut) -->
                 <div class="bg-acbm-yellow-400 bg-opacity-20 p-6 rounded-xl border border-acbm-yellow-500">
                     <h3 class="text-2xl font-bold text-acbm-blue-700 mb-2">Résultats du Meeting du [Date]</h3>
                     <p class="text-gray-700 mb-4">Lieu : [Nom du stade]</p>
                     <ul class="list-disc list-inside space-y-2 text-gray-800">
                         <li><strong class="text-acbm-blue-800">[Nom Athlète 1]</strong> (Minime) : <span class="text-acbm-yellow-500 font-black">1ère place</span> - Saut en longueur (5m20)</li>
-                        <li><strong class="text-acbm-blue-800">[Nom Athlète 2]</strong> (Cadet) : <span class="text-acbm-blue-700 font-black">2ème place</span> - 100m (11.5s)</li>
-                        <li><strong class="text-acbm-blue-800">[Nom Athlète 3]</strong> (Senior) : <span class="text-acbm-yellow-500 font-black">1ère place</span> - Lancer de poids (12m40)</li>
                     </ul>
-                    <a href="#!_LIEN_RESULTATS_COMPLETS_" class="inline-block mt-4 font-bold text-acbm-blue-700 hover:text-acbm-blue-600">Voir les résultats complets &rarr;</a>
-                </div>
-                <!-- Compétition 2 -->
-                <div class="bg-acbm-yellow-400 bg-opacity-20 p-6 rounded-xl border border-acbm-yellow-500">
-                    <h3 class="text-2xl font-bold text-acbm-blue-700 mb-2">Résultats du Cross du [Date]</h3>
-                    <p class="text-gray-700 mb-4">Lieu : [Nom du lieu]</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-800">
-                        <li><strong class="text-acbm-blue-800">Équipe Benjamins</strong> : <span class="text-acbm-blue-700 font-black">3ème place</span></li>
-                        <li><strong class="text-acbm-blue-800">[Nom Athlète 4]</strong> (Junior) : 5ème place</li>
-                    </ul>
-                    <a href="#!_LIEN_RESULTATS_COMPLETS_" class="inline-block mt-4 font-bold text-acbm-blue-700 hover:text-acbm-blue-600">Voir les résultats complets &rarr;</a>
                 </div>
             </div>
         </section>
@@ -728,7 +666,7 @@
             </div>
         </section>
 
-        <!-- ===== PAGE: CONTACT (Couleurs ajustées) ===== -->
+        <!-- ===== PAGE: CONTACT (Email mis à jour) ===== -->
         <section id="page-contact" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg">
             <h2 class="text-4xl font-black text-acbm-blue-700 mb-8">Nous Contacter</h2>
 
@@ -743,7 +681,8 @@
                     </div>
                      <div>
                         <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Email</h3>
-                        <a href="mailto:contact@acbm.gp" class="text-acbm-blue-700 hover:text-acbm-yellow-500 underline">[email.acbm@example.com]</a>
+                        <!-- EMAIL MIS A JOUR -->
+                        <a href="mailto:acbm971@gmail.com" class="text-acbm-blue-700 hover:text-acbm-yellow-500 underline">acbm971@gmail.com</a>
                     </div>
                      <div>
                         <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Téléphone</h3>
@@ -752,7 +691,6 @@
                      <div>
                         <h3 class="text-xl font-bold text-acbm-yellow-500 mb-2">Réseaux Sociaux</h3>
                         <div class="flex space-x-4">
-                            <!-- Remplacer # par vos vrais liens -->
                             <a href="#" target="_blank" class="text-acbm-blue-700 hover:text-acbm-yellow-500 transition duration-300">
                                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3v9h4v-9z"/></svg>
                             </a>
@@ -774,6 +712,59 @@
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Carte du Stade Municipal de Baie-Mahault">
                     </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================= -->
+        <!-- ===== NOUVELLE PAGE: ESPACE ADMIN =========== -->
+        <!-- ============================================= -->
+        <section id="page-admin" class="page-content hidden bg-white p-6 md:p-8 rounded-lg shadow-lg min-h-screen">
+            <h2 class="text-4xl font-black text-acbm-blue-700 mb-6 text-center">Espace Administrateur</h2>
+
+            <!-- ECRAN DE CONNEXION -->
+            <div id="admin-login-screen" class="max-w-md mx-auto bg-acbm-gray p-8 rounded-xl shadow-2xl border-2 border-acbm-yellow-500">
+                <p class="mb-4 text-center font-bold text-gray-700">Bonjour, si vous êtes Administrateur veuillez mettre le mot de passe pour rentrer.</p>
+                <input type="password" id="admin-password-input" placeholder="Mot de passe" class="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-acbm-yellow-400 outline-none">
+                <button onclick="checkAdminPassword()" class="w-full bg-acbm-blue-700 text-white font-bold py-3 rounded hover:bg-acbm-blue-800 transition">Se connecter</button>
+                <p id="login-error" class="text-red-600 mt-2 hidden text-center">Mot de passe incorrect.</p>
+            </div>
+
+            <!-- TABLEAU DE BORD (Caché par défaut) -->
+            <div id="admin-dashboard" class="hidden">
+                <div class="flex justify-between items-center mb-8 border-b pb-4">
+                    <p class="text-green-600 font-bold">Connecté en tant qu'administrateur</p>
+                    <button onclick="logoutAdmin()" class="text-sm text-red-600 underline">Se déconnecter</button>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Formulaire AJOUTER ACTUALITÉ -->
+                    <div class="bg-gray-50 p-6 rounded shadow border-l-4 border-acbm-yellow-400">
+                        <h3 class="text-xl font-bold mb-4 text-acbm-blue-700">Publier une Actualité</h3>
+                        <input type="text" id="news-title" placeholder="Titre" class="w-full p-2 mb-2 border rounded">
+                        <input type="date" id="news-date" class="w-full p-2 mb-2 border rounded">
+                        <textarea id="news-content" placeholder="Description de l'actualité..." class="w-full p-2 mb-2 border rounded h-32"></textarea>
+                        <button onclick="addNews()" class="w-full bg-acbm-blue-600 text-white font-bold py-2 rounded hover:bg-acbm-blue-700">Publier l'Annonce</button>
+                    </div>
+
+                    <!-- Formulaire AJOUTER CALENDRIER -->
+                    <div class="bg-gray-50 p-6 rounded shadow border-l-4 border-acbm-blue-700">
+                        <h3 class="text-xl font-bold mb-4 text-acbm-blue-700">Ajouter au Calendrier</h3>
+                        <input type="text" id="event-day" placeholder="Jour (ex: 12)" class="w-full p-2 mb-2 border rounded">
+                        <input type="text" id="event-month" placeholder="Mois (ex: DÉC)" class="w-full p-2 mb-2 border rounded">
+                        <input type="text" id="event-title" placeholder="Nom de l'événement" class="w-full p-2 mb-2 border rounded">
+                        <input type="text" id="event-location" placeholder="Lieu" class="w-full p-2 mb-2 border rounded">
+                        <button onclick="addEvent()" class="w-full bg-acbm-yellow-500 text-acbm-blue-800 font-bold py-2 rounded hover:bg-acbm-yellow-400">Ajouter l'événement</button>
+                    </div>
+
+                    <!-- Formulaire AJOUTER RÉSULTAT -->
+                    <div class="bg-gray-50 p-6 rounded shadow border-l-4 border-gray-500">
+                        <h3 class="text-xl font-bold mb-4 text-acbm-blue-700">Ajouter un Résultat</h3>
+                        <input type="text" id="result-title" placeholder="Titre (ex: Meeting du 20/11)" class="w-full p-2 mb-2 border rounded">
+                        <textarea id="result-details" placeholder="Détails (ex: Jean: 1er place...)" class="w-full p-2 mb-2 border rounded h-32"></textarea>
+                        <button onclick="addResult()" class="w-full bg-gray-700 text-white font-bold py-2 rounded hover:bg-gray-600">Publier le Résultat</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -804,26 +795,184 @@
                 <div>
                     <h5 class="text-lg font-semibold text-acbm-yellow-400 uppercase mb-3">Contact</h5>
                     <p class="text-gray-300 mb-2">Stade Municipal, 97122 Baie-Mahault</p>
-                    <p class="text-gray-300 mb-2">[email.acbm@example.com]</p>
+                    <!-- EMAIL MIS A JOUR -->
+                    <p class="text-gray-300 mb-2">acbm971@gmail.com</p>
                     <div class="flex space-x-4 mt-4">
                         <a href="#" target="_blank" class="text-gray-300 hover:text-acbm-yellow-400 transition duration-300">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3v9h4v-9z"/></svg>
                         </a>
                         <a href="#" target="_blank" class="text-gray-300 hover:text-acbm-yellow-400 transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.058 1.646.07 4.85-.07zM12 6.873c-2.849 0-5.127 2.278-5.127 5.127s2.278 5.127 5.127 5.127 5.127-2.278 5.127-5.127-2.278-5.127-5.127-5.127zm0 8.252c-1.73 0-3.125-1.395-3.125-3.125s1.395-3.125 3.125-3.125 3.125 1.395 3.125 3.125-1.395 3.125-3.125 3.125zm4.908-8.212c-.76 0-1.377.618-1.377 1.377s.618 1.377 1.377 1.377 1.377-.618 1.377-1.377-.618-1.377-1.377-1.377z"/></svg>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zM12 6.873c-2.849 0-5.127 2.278-5.127 5.127s2.278 5.127 5.127 5.127 5.127-2.278 5.127-5.127-2.278-5.127-5.127-5.127zm0 8.252c-1.73 0-3.125-1.395-3.125-3.125s1.395-3.125 3.125-3.125 3.125 1.395 3.125 3.125-1.395 3.125-3.125 3.125zm4.908-8.212c-.76 0-1.377.618-1.377 1.377s.618 1.377 1.377 1.377 1.377-.618 1.377-1.377-.618-1.377-1.377-1.377z"/></svg>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-acbm-blue-700 mt-6 pt-6 text-center text-gray-400 text-sm">
                 <p>&copy; 2025 Athlétique Club de Baie-Mahault. Tous droits réservés.</p>
-                <!-- Si vous voulez ajouter un crédit, vous pouvez le mettre ici -->
-                <!-- <p>Site conçu avec l'aide de Gemini</p> -->
             </div>
         </div>
     </footer>
 
-    <!-- =========== SCRIPTS JAVASCRIPT =========== -->
+    <!-- =========== SCRIPTS JAVASCRIPT & FIREBASE =========== -->
+
+    <!-- Importation Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // --- CONFIGURATION FIREBASE ---
+        let firebaseConfig;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'acbm-default';
+        
+        firebaseConfig = {
+            apiKey: "AIzaSyCLzGD3pDiy-iQA0uXMWwT29C6n3gDXJTY",
+            authDomain: "acbmsitetest.firebaseapp.com",
+            projectId: "acbmsitetest",
+            storageBucket: "acbmsitetest.firebasestorage.app",
+            messagingSenderId: "770200261938",
+            appId: "1:770200261938:web:11dbf5dc3987c86788f32b",
+            measurementId: "G-YSNL26Y49V"
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Connexion
+        signInAnonymously(auth).then(() => {
+            loadDynamicContent();
+        }).catch((error) => console.log("Erreur connexion:", error));
+
+
+        // --- FONCTIONS ADMIN ---
+        
+        window.addNews = async function() {
+            const title = document.getElementById('news-title').value;
+            const date = document.getElementById('news-date').value;
+            const content = document.getElementById('news-content').value;
+
+            if(!title || !content) return alert("Veuillez remplir les champs");
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'news'), {
+                    title: title,
+                    date: date || new Date().toISOString().split('T')[0],
+                    content: content,
+                    timestamp: Date.now()
+                });
+                alert("Actualité publiée !");
+                document.getElementById('news-title').value = "";
+                document.getElementById('news-content').value = "";
+            } catch (e) { alert("Erreur : " + e.message); }
+        }
+
+        window.addEvent = async function() {
+            const day = document.getElementById('event-day').value;
+            const month = document.getElementById('event-month').value;
+            const title = document.getElementById('event-title').value;
+            const location = document.getElementById('event-location').value;
+
+            if(!title) return alert("Veuillez mettre un titre");
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'calendar'), {
+                    day, month, title, location,
+                    timestamp: Date.now()
+                });
+                alert("Événement ajouté !");
+                document.getElementById('event-title').value = "";
+            } catch (e) { alert("Erreur : " + e.message); }
+        }
+
+        window.addResult = async function() {
+            const title = document.getElementById('result-title').value;
+            const details = document.getElementById('result-details').value;
+
+            if(!title) return alert("Veuillez mettre un titre");
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'results'), {
+                    title, details,
+                    timestamp: Date.now()
+                });
+                alert("Résultat publié !");
+                document.getElementById('result-title').value = "";
+            } catch (e) { alert("Erreur : " + e.message); }
+        }
+
+        // --- AFFICHAGE DYNAMIQUE ---
+
+        function loadDynamicContent() {
+            // News
+            const qNews = query(collection(db, 'artifacts', appId, 'public', 'data', 'news'), orderBy('timestamp', 'desc'));
+            onSnapshot(qNews, (snapshot) => {
+                const container = document.getElementById('news-container');
+                const homeContainer = document.getElementById('home-news-container');
+                if(!snapshot.empty) {
+                    let html = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        html += `
+                            <div class="md:flex gap-6 p-4 border rounded-xl shadow-lg border-l-4 border-acbm-yellow-400 bg-white mb-4">
+                                <div class="md:w-full">
+                                    <span class="text-sm text-acbm-yellow-500 font-semibold">${data.date}</span>
+                                    <h3 class="text-2xl font-bold text-acbm-blue-700 my-2">${data.title}</h3>
+                                    <p class="text-gray-600 whitespace-pre-line">${data.content}</p>
+                                </div>
+                            </div>`;
+                    });
+                    if(container) container.innerHTML = html;
+                    if(homeContainer) homeContainer.innerHTML = html;
+                }
+            }, (e) => {}); // Erreur silencieuse pour garder le contenu statique si besoin
+
+            // Calendrier
+            const qCal = query(collection(db, 'artifacts', appId, 'public', 'data', 'calendar'), orderBy('timestamp', 'desc'));
+            onSnapshot(qCal, (snapshot) => {
+                const container = document.getElementById('calendar-container');
+                if(!snapshot.empty) {
+                    let html = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        html += `
+                            <div class="flex items-center bg-acbm-yellow-400 bg-opacity-10 p-4 rounded-xl shadow-md border-l-4 border-acbm-blue-700 mb-4">
+                                <div class="text-center w-20 mr-4">
+                                    <span class="block text-3xl font-black text-acbm-blue-700">${data.day}</span>
+                                    <span class="block text-lg font-semibold text-acbm-yellow-500">${data.month}</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-acbm-blue-700">${data.title}</h3>
+                                    <p class="text-gray-700">Lieu : ${data.location}</p>
+                                </div>
+                            </div>`;
+                    });
+                    if(container) container.innerHTML = html;
+                }
+            }, (e) => {});
+
+            // Résultats
+            const qRes = query(collection(db, 'artifacts', appId, 'public', 'data', 'results'), orderBy('timestamp', 'desc'));
+            onSnapshot(qRes, (snapshot) => {
+                const container = document.getElementById('results-container');
+                if(!snapshot.empty) {
+                    let html = "";
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        html += `
+                            <div class="bg-acbm-yellow-400 bg-opacity-20 p-6 rounded-xl border border-acbm-yellow-500 mb-4">
+                                <h3 class="text-2xl font-bold text-acbm-blue-700 mb-2">${data.title}</h3>
+                                <p class="text-gray-800 whitespace-pre-line">${data.details}</p>
+                            </div>`;
+                    });
+                    if(container) container.innerHTML = html;
+                }
+            }, (e) => {});
+        }
+    </script>
+
+    <!-- Scripts UI et Logique Simple -->
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -831,72 +980,85 @@
         const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
         const pages = document.querySelectorAll('.page-content');
         const form = document.getElementById('pre-inscription-form');
-        const formSuccess = document.getElementById('form-success');
 
-        // Gestion du menu mobile
+        // Menu mobile
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Fonction pour afficher une page et masquer les autres
+        // Navigation
         function showPage(pageId) {
-            // Masquer toutes les pages
-            pages.forEach(page => {
-                page.classList.add('hidden');
-            });
-
-            // Afficher la page cible
+            pages.forEach(page => page.classList.add('hidden'));
             const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-            }
+            if (targetPage) targetPage.classList.remove('hidden');
 
-            // Mettre à jour la classe 'active' pour le menu desktop
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                // Note: La couleur de lien actif est maintenant gérée par la classe .active
-                // définie dans <style> pour la couleur Jaune.
-                if (link.getAttribute('onclick').includes(pageId)) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
             });
-
-            // Mettre à jour la classe 'active' pour le menu mobile
-             mobileNavLinks.forEach(link => {
+            mobileNavLinks.forEach(link => {
                 link.classList.remove('active');
-                // Note: La couleur de lien actif est maintenant gérée par la classe .active
-                // définie dans <style> pour le fond Jaune.
-                if (link.getAttribute('onclick').includes(pageId)) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
             });
 
-            // Fermer le menu mobile après un clic
             mobileMenu.classList.add('hidden');
-
-            // Remonter en haut de la page
             window.scrollTo(0, 0);
         }
 
-        // Gestion du formulaire de pré-inscription
+        // --- GESTION FORMULAIRE MAILTO ---
         if (form) {
             form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Empêche l'envoi réel du formulaire
+                e.preventDefault();
+                
+                const nom = document.getElementById('insc-nom').value;
+                const email = document.getElementById('insc-email').value;
+                const tel = document.getElementById('insc-tel').value;
+                const cat = document.getElementById('insc-cat').value;
 
-                // Ici, vous ajouteriez normalement un appel (fetch) pour envoyer les données à un serveur
+                // Construction du mail
+                const subject = encodeURIComponent("Nouvelle Pré-inscription ACBM : " + nom);
+                const body = encodeURIComponent(
+                    `Bonjour,\n\nVoici une demande de pré-inscription.\n\n` +
+                    `Nom : ${nom}\n` +
+                    `Email : ${email}\n` +
+                    `Téléphone : ${tel}\n` +
+                    `Catégorie : ${cat}\n\n` +
+                    `Merci.`
+                );
 
-                // Simulation d'un succès
-                form.reset(); // Vide le formulaire
-                formSuccess.classList.remove('hidden'); // Affiche le message de succès
-
-                // Cache le message après 3 secondes
-                setTimeout(() => {
-                    formSuccess.classList.add('hidden');
-                }, 3000);
+                // Ouverture du client mail
+                window.location.href = `mailto:acbm971@gmail.com?subject=${subject}&body=${body}`;
             });
         }
 
-        // Afficher la page d'accueil par défaut au chargement
+        // --- LOGIQUE ADMIN PASSWORD ---
+        function checkAdminPassword() {
+            const input = document.getElementById('admin-password-input').value;
+            const errorMsg = document.getElementById('login-error');
+            const loginScreen = document.getElementById('admin-login-screen');
+            const dashboard = document.getElementById('admin-dashboard');
+
+            if (input === "21xMeliodasx12j") {
+                loginScreen.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                sessionStorage.setItem('acbm_admin', 'true');
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            sessionStorage.removeItem('acbm_admin');
+            location.reload();
+        }
+
+        if(sessionStorage.getItem('acbm_admin') === 'true') {
+             document.getElementById('admin-login-screen').classList.add('hidden');
+             document.getElementById('admin-dashboard').classList.remove('hidden');
+        }
+
+        // Init
         document.addEventListener('DOMContentLoaded', () => {
             showPage('page-accueil');
         });
